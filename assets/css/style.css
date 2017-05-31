@@ -1,0 +1,13 @@
+body {
+	background-image: url("../images/comicBG.png");
+}
+
+.mainContent {
+	background-color: white;
+	align-content: center;
+	margin-top: 20px;
+}
+
+#title {
+	text-align: center;
+}
