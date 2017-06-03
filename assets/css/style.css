@@ -36,3 +36,11 @@ h1 {
 h2 {
 	margin: auto;
 }
+
+#timer {
+	color: red;
+	font-size: 40px;
+	margin-left: 140px;
+	height: 50px;
+	margin-top: 10px; 
+}

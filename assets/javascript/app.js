@@ -5,7 +5,8 @@
 
 var correctAnswers = 0; 
 var wrongAnswers = 0;
-var timer = 30;
+var countDown = 31;
+var decreasingNum;
 var appIsRunning = false;
 var nextQuestion = false;
 var currentQuestion;
@@ -51,14 +52,37 @@ $(document).ready(function(){
 
 // Display the start button
 
-
 	$(".startButton").on("click", function(){
 		$("#image").hide();
 		$(".startButton").hide();
-
+		theTimer();
 	});
 
 });
+
+function theTimer() {
+	decreasingNum = setInterval(decrement, 1000);
+};
+
+
+function decrement() {
+	countDown--;
+	$("#timer").html(countDown);
+
+	if (countDown === 0) {
+		clearInterval(decreasingNum);
+	}
+};
+
+// Creating a 30 second timer
+// function timerCountdown() {
+// 	var timeRemaining = seconds = timer
+// 	$("#timer").append(counter);	
+// }
+
+// function questions() {
+
+// }
 
 // Show start button.
 // On button click, start game. 
