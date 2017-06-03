@@ -43,8 +43,8 @@ var questions = [
 	},
 ];
 
-var questionOne = questions[1].answer[0];
-console.log(questionOne);
+// var questionOne = questions[1].answer[0];
+// console.log(questionOne);
 
 // After the document loads
 $(document).ready(function(){
@@ -52,7 +52,13 @@ $(document).ready(function(){
 // Display the start button
 
 
-})
+	$(".startButton").on("click", function(){
+		$("#image").hide();
+		$(".startButton").hide();
+
+	});
+
+});
 
 // Show start button.
 // On button click, start game. 
