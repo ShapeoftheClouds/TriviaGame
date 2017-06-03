@@ -2,12 +2,33 @@ body {
 	background-image: url("../images/comicBG.png");
 }
 
+h1 {
+	font-size: 50px;
+}
+
 .mainContent {
-	background-color: white;
+	background-color: black;
 	align-content: center;
-	margin-top: 20px;
+	margin-top: 10px;
+	padding-bottom: 120px;
+	border-style: solid;
+	border-width: 10px;
+	border-color: black;
+	font-family: 'Six Caps', sans-serif;
+	color: white;
 }
 
 #title {
 	text-align: center;
 }
+
+.startButton {
+	margin-left: 120px;
+	margin-top: 20px;
+	background: red;
+}
+
+.image {
+	width: 100%;
+}
+
