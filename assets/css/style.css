@@ -22,11 +22,15 @@ h1 {
 	text-align: center;
 }
 
+.button {
+	text-align: center;
+}
+
 .startButton {
-	margin-left: 120px;
 	height: 50px;
 	margin-top: 10px;
 	background: red;
+	text-align: center;
 }
 
 .image {
@@ -37,10 +41,55 @@ h2 {
 	margin: auto;
 }
 
+.timer {
+	text-align: center; 
+}
+
 #timer {
 	color: red;
 	font-size: 40px;
-	margin-left: 140px;
 	height: 50px;
 	margin-top: 10px; 
+}
+
+.col-center-block {
+    float: none;
+    display: block;
+    margin: 0 auto;
+    /* margin-left: auto; margin-right: auto; */
+}
+
+#question {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center; 
+}
+
+#optionOne {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#optionTwo {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#optionThree {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+#optionFour {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
 }
