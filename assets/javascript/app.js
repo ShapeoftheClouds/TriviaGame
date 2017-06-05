@@ -6,15 +6,16 @@ var decreasingNum;
 var appIsRunning = false;
 var nextQuestion = false;
 var currentQuestion;
-
-// Objects have properties and values.
-// Refactoring - Rewritting code. Commit often. 
+var questionOneOptions = questions[0].answer;
+var questionOneAnswer = questions[0].correctAnswer; 
+var firstQuestion = questions[0].answer[0];
+var rightAnswer = questions[0].correctAnswer;
 
 // My questions as an array of objects 
 var questions = [
 	{
 		question: "What color was Spock's skin color originally going to be?",
-		answer: ["BLUE", "GREEN", "RED", "ORANGE"],
+		answer: ["BLUE ", "GREEN ", "RED ", "ORANGE "],
 		correctAnswer: 2
 	}, {
 		question: "Which character's actor originated the Klingon language?",
@@ -44,13 +45,24 @@ $(document).ready(function(){
 
 // Display the start button
 	$(".startButton").on("click", function(){
-		$("#image").hide();
+		appStart();
+	});
+
+	$("#optionOne").on("click", function(){
+		if (questionOneOptions === questionOneAnswer) {
+			correctAnswerOne();
+		}
+	}); 
+
+});
+
+
+function appStart() {
+	$("#image").hide();
 		$(".startButton").hide();
 		theTimer();
 		displayQuestionOne();
-	});
-});
-
+};
 
 // The Timer. This function decreased the number by a second. 
 function theTimer() {
@@ -62,30 +74,30 @@ function decrement() {
 	countDown--;
 	$("#timer").html(countDown);
 	if (countDown === 0) {
-		clearInterval(decreasingNum);
+		clearInterval(decreasingNum); //Hide this for the answer page. 
 	}
 };
 
-function rightAnswerOne() {
-	$("#answer").html("A most logical response!");
+
+function correctFirstAnswer() {
+	if (firstQuestion === rightAnswer) {
+		$("#answer").html("A very logical response.");
+	}
 };
-
-
-
-// Wrong answer
-function wrongAnswerOne() {
-
-};
-
 
 // Displaying questions. There's most likely a way to simplify this code. Look into it.
 function displayQuestionOne() {
 	$("#question").html(questions[0].question);
-	$("#optionOne").html(questions[0].answer[0]);
-	$("#optionTwo").html(questions[0].answer[1]);
-	$("#optionThree").html(questions[0].answer[2]);
-	$("#optionFour").html(questions[0].answer[3]);
+	$("#optionOne").html(questions[1].answer[0]);
+	$("#optionTwo").html(questions[1].answer[1]);
+	$("#optionThree").html(questions[1].answer[2]);
+	$("#optionFour").html(questions[1].answer[3]);
 };
+
+function correctAnswerOne() {
+	$("#answer").html("A most logical response!");
+};
+
 
 function displayQuestionTwo() {
 	$("#question").html(questions[1].question);
