@@ -6,10 +6,6 @@ var decreasingNum;
 var appIsRunning = false;
 var nextQuestion = false;
 var currentQuestion;
-var questionOneOptions = questions[0].answer;
-var questionOneAnswer = questions[0].correctAnswer; 
-var firstQuestion = questions[0].answer[0];
-var rightAnswer = questions[0].correctAnswer;
 
 // My questions as an array of objects 
 var questions = [
@@ -40,6 +36,11 @@ var questions = [
 	},
 ];
 
+var questionOneOptions = questions[0].answer;
+var questionOneAnswer = questions[0].correctAnswer; 
+var firstQuestion = questions[0].answer[0];
+var rightAnswer = questions[0].correctAnswer;
+
 // After the document loads
 $(document).ready(function(){
 
@@ -50,7 +51,7 @@ $(document).ready(function(){
 
 	$("#optionOne").on("click", function(){
 		if (questionOneOptions === questionOneAnswer) {
-			correctAnswerOne();
+			correctFirstAnswer();
 		}
 	}); 
 
@@ -79,9 +80,23 @@ function decrement() {
 };
 
 
+var questionAnswer1 = questions[0].correctAnswer;
+
+$(".button").on("click", function() {
+	if (this.attr("data-num") == questionAnswer) {
+		correctAnswer();
+	} else {
+		wrongAnswer();
+	}
+});
+				
+function correctAnswer() {
+	$("#answer").html("A most logical response.");
+}
+
 function correctFirstAnswer() {
 	if (firstQuestion === rightAnswer) {
-		$("#answer").html("A very logical response.");
+		$("#answer").html("A most logical response.");
 	}
 };
 
@@ -93,11 +108,6 @@ function displayQuestionOne() {
 	$("#optionThree").html(questions[1].answer[2]);
 	$("#optionFour").html(questions[1].answer[3]);
 };
-
-function correctAnswerOne() {
-	$("#answer").html("A most logical response!");
-};
-
 
 function displayQuestionTwo() {
 	$("#question").html(questions[1].question);
