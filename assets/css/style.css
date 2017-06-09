@@ -66,6 +66,11 @@ h2 {
 	text-align: center; 
 }
 
+.allButtons {
+	margin-top: 20px;
+	text-align: center; 
+}
+
 #optionOne {
 	font-family: 'Pontano Sans', sans-serif;
 	font-size: 18px;
@@ -93,3 +98,38 @@ h2 {
 	margin-top: 20px;
 	text-align: center;
 }
+
+#optionFive {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+/*.btn.option0 {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.btn.option1 {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.btn.option2 {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.btn.option3 {
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 18px;
+	margin-top: 20px;
+	text-align: center;
+}*/

@@ -6,6 +6,7 @@ var decreasingNum;
 var appIsRunning = false;
 var nextQuestion = false;
 var currentQuestion;
+var previousQuestion = [];
 
 // My questions as an array of objects 
 var questions = [
@@ -82,8 +83,8 @@ function decrement() {
 
 var questionAnswer1 = questions[0].correctAnswer;
 
-$(".button").on("click", function() {
-	if (this.attr("data-num") == questionAnswer) {
+$(".all").on("click", function() {
+	if (this.attr("data-num") == correctAnswer) {
 		correctAnswer();
 	} else {
 		wrongAnswer();
@@ -103,10 +104,10 @@ function correctFirstAnswer() {
 // Displaying questions. There's most likely a way to simplify this code. Look into it.
 function displayQuestionOne() {
 	$("#question").html(questions[0].question);
-	$("#optionOne").html(questions[1].answer[0]);
-	$("#optionTwo").html(questions[1].answer[1]);
-	$("#optionThree").html(questions[1].answer[2]);
-	$("#optionFour").html(questions[1].answer[3]);
+	$(".option0").html(questions[0].answer[0]);
+	$(".option1").html(questions[0].answer[1]);
+	$(".option2").html(questions[0].answer[2]);
+	$(".option3").html(questions[0].answer[3]);
 };
 
 function displayQuestionTwo() {
@@ -141,6 +142,77 @@ function displayQuestionFive() {
 	$("#optionFour").html(questions[4].answer[3]);
 };
 
+
+var newGame = function () {
+	num = 0; 
+	count = 0; 
+	score = 0;
+	previousQuestion = [];
+};
+
+var selectQuestion = function() {
+	var limit = Object.keys(questions).length;
+	num = Math.floor((Math.random() * limit) + 1)
+};
+
+var findQuestion = function () {
+	selectQuestion(); 
+	while (wasAsked()) {
+		selectQuestion();
+	};
+};
+
+var questionsAsked = function() {
+	var result = false; 
+	for (var index = 0; index <= previousQuestion.length; i++) {
+		if (num == previousQuestion[i]) {
+			result = true;
+		};
+	};
+	return result;
+};
+
+
+var loadQuestion = function() {
+    previousQuestion.push(num);    
+    $('#icon').html("<i class=\"fa fa-"+quiz_questions[num]["icon"]+"\"></i>");
+    $('#text').html(quiz_questions[num]["question"]);
+    $('#option-1').html(quiz_questions[num]["options"][1]);
+    $('#option-2').html(quiz_questions[num]["options"][2]);
+    $('#option-3').html(quiz_questions[num]["options"][3]);
+    $('#option-4').html(quiz_questions[num]["options"][4]);
+    updateScore();
+    count++;
+    $('.progress').text(count+"/"+count_limit);
+};
+var correct = function(user_answer) {
+    if (user_answer == quiz_questions[num]["answer"]) {
+        return true;
+    } else {
+        return false;
+    }
+};
+var updateScore = function() {
+    $('.score').text(score);
+};
+var updateRank = function() {
+    if (score == 10){
+        $('.rank').text('Time Master');
+        $('.rank-msg').text('Prefect score!)');
+    } else if (score >= 7 && score <=  9) {
+        $('.rank').text('Time Lord');
+        $('.rank-msg').text('You have mad time travel trivia skillz! Time does your bidding, except for all that time you spent watching time travel movies - you can\'t get that back.');
+    } else if (score >= 4 && score <= 6) {
+        $('.rank').text('Time Traveler');
+        $('.rank-msg').text('You may not be the best, but your not the worst.');
+    } else if (score >= 1 && score <= 3) {
+        $('.rank').text('Time Traveling Sidekick');
+        $('.rank-msg').text('Meh. Not a great score, but if you ever ending up traveling through time you probably know enough to not accidently destroy the universe.');
+    } else if (score == 0) {
+        $('.rank').text('Time Dunce');
+        $('.rank-msg').text('Doh! The only "time traveling" you apparently understand is starring at the clock while drool runs down your chin.');
+    }
+};
 
 // Show start button.
 // On button click, start game. 
