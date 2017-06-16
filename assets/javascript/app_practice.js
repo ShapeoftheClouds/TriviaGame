@@ -82,7 +82,7 @@ $(document).ready(function() {
 	$("#answerButtons").on("click", function(){
 		console.log("You clicked a button!");
 
-		var userGuess = $("input:radio[name=correctAnswer]:checked").val();
+		var userGuess = $("#answerButtons > input[type=button]").val();
 		console.log(userGuess);
 	});
 
@@ -121,9 +121,7 @@ $("#startOver").on("click", function() {
 	$("#endOfGame").fadeOut(500, function() {
 		newGame();
 		findQuestion();
-		loadQuestion();
-		$("form input").prop("checked", false);
-		$("#quiz").fadeIn(500);
+		appStart();
 	});
 });
 
