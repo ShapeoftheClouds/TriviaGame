@@ -84,44 +84,16 @@ $(document).ready(function() {
 
 		var userGuess = $("#answerButtons > input[type=button]").val();
 		console.log(userGuess);
+		correct();
 	});
 
 
 });
-
-// When clicking an answer button.
-
-
-
-
-
-// $("#optionOne").on("click", function() {
-// 	var userGuess = $("input:radio[name=answer]:checked").val();
-// 	if (!userGuess) {
-// 		alert("Choose wisely!");
-// 	} else {
-// 		if (correct(userGuess)) {
-// 			$("#quiz").fadeOut(500, function() {
-// 				correctGuesses++;
-// 				updateScore();
-// 				$("#answer").text(questions[number]["answer-detail"]);
-// 				$("#correctAnswer").fadeIn(500);
-// 			});
-// 		} else {
-// 			$("#quiz").fadeOut(500, function() {
-// 				wrongGuesses++;
-// 				$("#answer").text(questions[number]["answer-detail"]);
-// 				$("#wrongAnswer").fadeIn(500);
-// 			});
-// 		}
-// 	}
-// });
 	
 $("#startOver").on("click", function() {
 	$("#endOfGame").fadeOut(500, function() {
 		newGame();
 		findQuestion();
-		appStart();
 	});
 });
 
@@ -177,22 +149,45 @@ var questionsAsked = function() {
 
 var loadQuestion = function() {
 	previousQuestions.push(number); 
-	$("#question").html(questions[number]["question"]);
-	$("#optionOne").html(questions[number]["options"][1]);
-	$("#optionTwo").html(questions[number]["options"][2]);
-	$("#optionThree").html(questions[number]["options"][3]);
-	$("#optionFour").html(questions[number]["options"][4]);
-	$("#optionFive").html(questions[number]["options"][5]);
+	//Iterate through the options and then tell it what to do.
+	for (var i = 0; i <= questions[number]["options"]; i++) {
+		$("#optionOne").html(questions[number]["options"][i]);
+	}
+	// $("#question").html(questions[number]["question"]);
+	// $("#optionOne").html(questions[number]["options"][1]);
+	// $("#optionTwo").html(questions[number]["options"][2]);
+	// $("#optionThree").html(questions[number]["options"][3]);
+	// $("#optionFour").html(questions[number]["options"][4]);
+	// $("#optionFive").html(questions[number]["options"][5]);
 };
 
 
 var correct = function(userGuess) {
-	if(userGuess == questions[number]["answer"]) {
-		return true;
+	if(userGuess === questions[number]["answer"]) {
+		answerPage();
 	} else {
 		return false;
 	};
 }
+
+// 
+
+function answerPage() { //Set timeout interval
+	$("#answerButtons").hide();
+	$("#question").hide();
+	$("#timer").hide();
+	$("#answer").html("GreatGuess!").hide();
+
+	setTimeout(function()
+	{ 
+	$("#answerButtons").show();
+	$("#question").show();
+	$("#timer").show();
+	}, 1000);
+
+
+	$("#answer").html("GreatGuess!");
+};
 
 var updateScore = function() {
 	$("#numberOfCorrectGuesses").text(correctGuesses);

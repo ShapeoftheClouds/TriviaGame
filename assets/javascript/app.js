@@ -102,6 +102,9 @@ function correctFirstAnswer() {
 };
 
 // Displaying questions. There's most likely a way to simplify this code. Look into it.
+// If code is repeating itself, 99% of the time it can be refactored.
+
+
 function displayQuestionOne() {
 	$("#question").html(questions[0].question);
 	$(".option0").html(questions[0].answer[0]);
